@@ -1,0 +1,61 @@
+{% extends 'web/layouts/base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<!-- Contact Form Begin -->
+<div class="contact-form spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact__form__title">
+                    <h2>REGISTER PAGE</h2>
+                </div>
+            </div>
+        </div>
+        <form action="" method="POST">
+
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" placeholder="Fullname" style="margin-bottom: 10px;" name="name">
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" placeholder="Email" style="margin-bottom: 10px;" name="email">
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6 col-md-6">
+                    <input type="password" placeholder="Password" style="margin-bottom: 10px;" name="password">
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6 col-md-6">
+                    <input type="password" placeholder="Confirm password" style="margin-bottom: 10px;" name="repassword">
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6 col-md-6" style="margin-bottom: 10px;">
+                    <select name="sex">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6 col-md-6">
+                    <input type="tel" placeholder="Số điện thoại" style="margin-bottom: 10px;" name="phone" pattern="[0-9]{10}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <button type="submit" class="site-btn">Register</button>
+                </div>
+                
+            </div>
+        </form>        
+    </div>
+</div>
+<!-- Contact Form End -->
+{% endblock %}

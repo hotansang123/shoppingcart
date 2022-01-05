@@ -17,7 +17,28 @@ checkout:
 contact:
    path: /contact
    controller: App\Controller\Web\HomeController::contact
+login:
+   path: /login
+   controller: App\Controller\Web\AuthController::showFormLogin
+register:
+   path: /register
+   controller: App\Controller\Web\AuthController::showFormRegister
 # Admin
 admin_auth_login:
    path: /admin/login
    controller: App\Controller\Admin\AuthController::showFormLogin
+admin_dashboard:
+   path: /admin/dashboard
+   controller: App\Controller\Admin\DashboardController::index
+admin_category_list:
+   path: /admin/category/list
+   controller: App\Controller\Admin\CategoryController::index
+admin_category_create:
+   path: /admin/category/create
+   controller: App\Controller\Admin\CategoryController::create
+admin_product_list:
+   path: /admin/product/list
+   controller: App\Controller\Admin\ProductController::index
+admin_product_create:
+   path: /admin/product/create
+   controller: App\Controller\Admin\ProductController::create
