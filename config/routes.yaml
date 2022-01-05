@@ -1,3 +1,18 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+   path: /
+   controller: App\Controller\Web\HomeController::index
+shop:
+   path: /shop
+   controller: App\Controller\Web\HomeController::shop
+shop_detail:
+   path: /shop-detail
+   controller: App\Controller\Web\HomeController::shopDetail
+shopping_cart:
+   path: /shopping-cart
+   controller: App\Controller\Web\HomeController::shoppingCart
+checkout:
+   path: /checkout
+   controller: App\Controller\Web\HomeController::checkout
+contact:
+   path: /contact
+   controller: App\Controller\Web\HomeController::contact
