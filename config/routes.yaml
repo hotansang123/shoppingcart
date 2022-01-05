@@ -1,3 +1,4 @@
+# Client
 index:
    path: /
    controller: App\Controller\Web\HomeController::index
@@ -16,3 +17,7 @@ checkout:
 contact:
    path: /contact
    controller: App\Controller\Web\HomeController::contact
+# Admin
+admin_auth_login:
+   path: /admin/login
+   controller: App\Controller\Admin\AuthController::showFormLogin
