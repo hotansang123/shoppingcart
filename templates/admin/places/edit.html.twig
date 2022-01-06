@@ -1,0 +1,27 @@
+{% extends 'admin/layouts/index.html.twig' %}
+
+{% block content %}
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Place
+                        <small>Edit</small>
+                    </h1>
+                    <form action="/admin/place/update/{{ place.id }}" method="POST" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="place-name">Name: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter name" id="place-name" name="place-name" value="{{ place.name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Link image: <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter link image" id="image" name="image" value="{{ place.image }}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </div>
+{% endblock %}

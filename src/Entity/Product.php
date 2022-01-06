@@ -47,6 +47,11 @@ class Product
      */
     private $price;
 
+        /**
+     * @ORM\Column(type="integer")
+     */
+    private $place_id;
+
     // Getters & Setters
     public function getId() {
         return $this->id;
@@ -90,6 +95,14 @@ class Product
 
     public function setCategoryId($category_id) {
         $this->category_id = $category_id;
+    }
+
+    public function getPlaceId() {
+        return $this->place_id;
+    }
+
+    public function setPlaceId($place_id) {
+        $this->place_id = $place_id;
     }
 
     public function setPrice($price) {

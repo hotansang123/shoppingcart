@@ -6,6 +6,10 @@ namespace App\Controller\Web;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use App\Entity\Category;
+use App\Entity\Place;
+use App\Entity\Product;
+use Doctrine\ORM\Query\Expr\Join;
 
 class HomeController extends AbstractController {
 
@@ -14,7 +18,9 @@ class HomeController extends AbstractController {
      * @Method({"GET"})
      */
     public function index() {
-        return $this->render('web/home.html.twig');
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $places = $this->getDoctrine()->getRepository(Place::class)->findAll();
+        return $this->render('web/home.html.twig',['categories' => $categories, 'places' => $places]);
     }
 
     /**
@@ -22,7 +28,8 @@ class HomeController extends AbstractController {
      * @Method({"GET"})
      */
     public function shop() {
-        return $this->render('web/shop.html.twig');
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('web/shop.html.twig',['categories' => $categories]);
     }
 
     /**
@@ -30,7 +37,8 @@ class HomeController extends AbstractController {
      * @Method({"GET"})
      */
     public function shopDetail() {
-        return $this->render('web/shop-detail.html.twig');
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('web/shop-detail.html.twig',['categories' => $categories]);
     }
 
     /**
@@ -38,7 +46,8 @@ class HomeController extends AbstractController {
      * @Method({"GET"})
      */
     public function shoppingCart() {
-        return $this->render('web/shopping-cart.html.twig');
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('web/shopping-cart.html.twig',['categories' => $categories]);
     }
 
     /**
@@ -46,7 +55,8 @@ class HomeController extends AbstractController {
      * @Method({"GET"})
      */
     public function checkout() {
-        return $this->render('web/checkout.html.twig');
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('web/checkout.html.twig',['categories' => $categories]);
     }
 
     /**
@@ -54,6 +64,14 @@ class HomeController extends AbstractController {
      * @Method({"GET"})
      */
     public function contact() {
-        return $this->render('web/contact.html.twig');
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('web/contact.html.twig',['categories' => $categories]);
+    }
+
+    public function shopProductCategory($id)
+    {
+        $products = $this->getDoctrine()->getRepository(Product::class)->findByCategoryIdField($id);
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('web/shop.html.twig',['categories' => $categories, 'products' => $products]);
     }
 }

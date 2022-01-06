@@ -39,6 +39,18 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="place_id">Place: <span class="text-danger">*</span></label>
+                            <select class="form-control" name="place_id" id="place_id" required>
+                                {% for place in places %}
+                                    {% if place_id == place.id %}
+                                        <option value="{{ place.id }}" selected>{{ place.name }}</option>
+                                    {% else %}
+                                        <option value="{{ place.id }}">{{ place.name }}</option>
+                                    {% endif %}>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="image">Link image: <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" placeholder="Enter link image" id="image" name="image" value="{{ product.image }}" required>
                         </div>

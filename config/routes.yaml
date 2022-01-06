@@ -23,6 +23,9 @@ login:
 register:
    path: /register
    controller: App\Controller\Web\AuthController::showFormRegister
+product_category:
+   path: /product/category/{id}
+   controller: App\Controller\Web\HomeController::shopProductCategory
 # Admin
 admin_auth_login:
    path: /admin/login
@@ -33,9 +36,6 @@ admin_handle_login:
 admin_auth_logout:
    path: /admin/logout
    controller: App\Controller\Admin\AuthController::logout
-admin_dashboard:
-   path: /admin/dashboard
-   controller: App\Controller\Admin\DashboardController::index
 admin_category_list:
    path: /admin/category/list
    controller: App\Controller\Admin\CategoryController::index
@@ -72,3 +72,22 @@ admin_product_update:
 admin_product_delete:
    path: /admin/product/delete/{id}
    controller: App\Controller\Admin\ProductController::delete
+# place
+admin_place_list:
+   path: /admin/place/list
+   controller: App\Controller\Admin\PlaceController::index
+admin_place_create:
+   path: /admin/place/create
+   controller: App\Controller\Admin\PlaceController::create
+admin_place_store:
+   path: /admin/place/store
+   controller: App\Controller\Admin\PlaceController::store
+admin_place_edit:
+   path: /admin/place/edit/{id}
+   controller: App\Controller\Admin\PlaceController::edit
+admin_place_update:
+   path: /admin/place/update/{id}
+   controller: App\Controller\Admin\PlaceController::update
+admin_place_delete:
+   path: /admin/place/delete/{id}
+   controller: App\Controller\Admin\PlaceController::delete

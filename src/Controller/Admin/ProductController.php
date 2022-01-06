@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Entity\Place;
 use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController {
@@ -27,7 +28,8 @@ class ProductController extends AbstractController {
      */
     public function create() {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        return $this->render('admin/products/create.html.twig', ['categories' => $categories]);
+        $places = $this->getDoctrine()->getRepository(Place::class)->findAll();
+        return $this->render('admin/products/create.html.twig', ['categories' => $categories, 'places' => $places]);
     }
 
     /**
@@ -42,6 +44,7 @@ class ProductController extends AbstractController {
         $product->setQty($request->request->get('quantity'));
         $product->setDescription($request->request->get('content'));
         $product->setCategoryId($request->request->get('category_id'));
+        $product->setPlaceId($request->request->get('place_id'));
         $product->setPrice($request->request->get('price'));
         $entityManager->persist($product);
         $entityManager->flush();
@@ -55,7 +58,8 @@ class ProductController extends AbstractController {
     public function edit($id) {
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        return $this->render('admin/products/edit.html.twig', ['product' => $product, 'categories' => $categories, 'category_id' => $product->getCategoryId()]);
+        $places = $this->getDoctrine()->getRepository(Place::class)->findAll();
+        return $this->render('admin/products/edit.html.twig', ['product' => $product, 'categories' => $categories, 'category_id' => $product->getCategoryId(), 'place_id' => $product->getPlaceId(), 'places' => $places]);
     }
     
     /**
@@ -70,6 +74,7 @@ class ProductController extends AbstractController {
         $product->setQty($request->request->get('quantity'));
         $product->setDescription($request->request->get('content'));
         $product->setCategoryId($request->request->get('category_id'));
+        $product->setPlaceId($request->request->get('place_id'));
         $product->setPrice($request->request->get('price'));
         $entityManager->persist($product);
         $entityManager->flush();

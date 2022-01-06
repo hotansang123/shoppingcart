@@ -29,7 +29,7 @@ class AuthController extends AbstractController {
         foreach ($admins as $admin) {
             if ($admin->getEmail() == $request->request->get('email') && $admin->getPassword() == md5($request->request->get('password'))) {
                 $session->set('admin_login', 1);
-                return $this->redirectToRoute('admin_dashboard');
+                return $this->redirectToRoute('admin_category_list');
             }
         }
         return $this->redirectToRoute('admin_auth_login');
