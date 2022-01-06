@@ -42,6 +42,11 @@ class Product
      */
     private $category_id;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price;
+
     // Getters & Setters
     public function getId() {
         return $this->id;
@@ -72,18 +77,26 @@ class Product
     }
 
     public function getDescription() {
-        return $this->category_id;
-    }
-
-    public function setDescription($category_id) {
-        $this->category_id = $category_id;
-    }
-
-    public function getCategoryId() {
         return $this->description;
     }
 
-    public function setCategoryId($description) {
+    public function setDescription($description) {
         $this->description = $description;
+    }
+
+    public function getCategoryId() {
+        return $this->category_id;
+    }
+
+    public function setCategoryId($category_id) {
+        $this->category_id = $category_id;
+    }
+
+    public function setPrice($price) {
+        $this->price = $price;
+    }
+
+    public function getPrice() {
+        return $this->price;
     }
 }

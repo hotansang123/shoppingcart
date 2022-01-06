@@ -55,7 +55,7 @@ class ProductController extends AbstractController {
     public function edit($id) {
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        return $this->render('admin/products/edit.html.twig', ['product' => $product, 'categories' => $categories]);
+        return $this->render('admin/products/edit.html.twig', ['product' => $product, 'categories' => $categories, 'category_id' => $product->getCategoryId()]);
     }
     
     /**
