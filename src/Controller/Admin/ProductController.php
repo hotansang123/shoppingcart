@@ -36,12 +36,16 @@ class ProductController extends AbstractController {
      */
     public function store(Request $request) {
         $entityManager = $this->getDoctrine()->getManager();
-        $category = new Category();
-        $category->setName($request->request->get('category-name'));
-        $category->setImage($request->request->get('image'));
-        $entityManager->persist($category);
+        $product = new Product();
+        $product->setName($request->request->get('title'));
+        $product->setImage($request->request->get('image'));
+        $product->setQty($request->request->get('quantity'));
+        $product->setDescription($request->request->get('content'));
+        $product->setCategoryId($request->request->get('category_id'));
+        $product->setPrice($request->request->get('price'));
+        $entityManager->persist($product);
         $entityManager->flush();
-        return $this->redirectToRoute('admin_category_list');
+        return $this->redirectToRoute('admin_product_list');
     }
 
     /**
@@ -51,7 +55,7 @@ class ProductController extends AbstractController {
     public function edit($id) {
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        return $this->render('admin/categories/edit.html.twig', ['product' => $product, 'categories' => $categories]);
+        return $this->render('admin/products/edit.html.twig', ['product' => $product, 'categories' => $categories]);
     }
     
     /**
@@ -61,8 +65,12 @@ class ProductController extends AbstractController {
     public function update(Request $request, $id) {
         $entityManager = $this->getDoctrine()->getManager();
         $product = $this->getDoctrine()->getRepository(Product::class)->find($id);
-        $product->setName($request->request->get('name'));
+        $product->setName($request->request->get('title'));
         $product->setImage($request->request->get('image'));
+        $product->setQty($request->request->get('quantity'));
+        $product->setDescription($request->request->get('content'));
+        $product->setCategoryId($request->request->get('category_id'));
+        $product->setPrice($request->request->get('price'));
         $entityManager->persist($product);
         $entityManager->flush();
         return $this->redirectToRoute('admin_product_list');
